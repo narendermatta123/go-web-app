@@ -36,8 +36,6 @@ jobs:
       - name: checkout-repository
         uses: actions/checkout@v4
       - name: Set up Go 1.22.5
-      - name: Ensure tar is installed
-        run: sudo apt-get update && sudo apt-get install -y tar
 
         uses: actions/setup-go@v4
         with:
@@ -46,7 +44,7 @@ jobs:
         uses: golangci/golangci-lint-action@v6
         with:
           version: v1.56.2
-          install-mode: binary
+          install-mode: goinstall
           only-new-issues: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
